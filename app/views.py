@@ -5,6 +5,7 @@ import requests
 from django.http import JsonResponse, StreamingHttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.db import connection
 
 # OpenAI API configuration
 OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
@@ -95,3 +96,23 @@ def update_notes_api(request):
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
     return JsonResponse({"error": "Only POST requests are allowed"}, status=405)
+
+
+@csrf_exempt
+def get_history_api(request):
+    if request.method == "GET":
+        user_id = request.GET.get("userId")
+        if not user_id:
+            return JsonResponse({"error": "userId not provided"}, status=400)
+
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT user_id, title, content FROM prdai.history WHERE user_id = %s", [user_id])
+                rows = cursor.fetchall()
+                history_data = []
+                for row in rows:
+                    history_data.append({"user_id": row[0], "title": row[1], "content": row[2]})
+            return JsonResponse({"history": history_data})
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    return JsonResponse({"error": "Only GET requests are allowed"}, status=405)

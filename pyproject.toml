@@ -2,11 +2,16 @@
 name = "djangoweb"
 version = "0.1.0"
 description = "A Django web application"
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
 requires-python = ">=3.11"
 dependencies = [
-    "Django==5.2.4",
+    "Django==5.0.*",
     "python-dotenv",
     "requests",
+    "mssql-django",
+    "pyodbc",
 ]
 
 [build-system]
@@ -16,3 +21,6 @@ build-backend = "setuptools.build_meta"
 [tool.uv]
 # UV-specific settings can go here if needed.
 # For now, just relying on [project] dependencies.
+
+[tool.setuptools]
+packages = ["app", "djangoweb"]

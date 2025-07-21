@@ -1,67 +1,248 @@
 body {
-            margin: 0;
-            font-family: sans-serif;
-        }
-        .header {
-            background-color: rgb(30, 136, 229);
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 40px;
-        }
-        .main {
-            display: flex;
-            height: calc(100vh - 60px); /* Full height minus header */
-            position: relative; /* Added for positioning context */
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #f4f4f4;
-            padding: 20px;
-            transition: width 0.3s, padding 0.3s, left 0.3s; /* Added left to transition */
-            overflow: hidden;
-            position: absolute; /* Changed to absolute */
-            top: 0; /* Position at the top of the main container */
-            left: 0; /* Position at the left of the main container */
-            height: 100%; /* Take full height of the main container */
-            z-index: 100; /* Ensure it's on top of other content */
-            box-sizing: border-box;
-        }
-        .sidebar.collapsed {
-            width: 0;
-            padding: 20px 0;
-            left: -250px; /* Move off-screen when collapsed */
-        }
-        .content {
-            flex-grow: 1;
-            display: flex;
-            height: 100%; /* Ensure content takes full height */
-            margin-left: 250px; /* Initial margin to make space for the sidebar */
-            transition: margin-left 0.3s; /* Add transition for smooth movement */
-        }
-        .content.sidebar-collapsed {
-            margin-left: 0;
-        }
-        .left-area {
-            flex: 2;
-            padding: 20px;
-            border-right: 1px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        .right-area {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        .toggle-btn {
-            cursor: pointer;
-            font-size: 20px;
-        }
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5; /* Light gray background */
+}
+
+.header {
+    background-color: #ffffff; /* White header */
+    color: #333; /* Darker text */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.main {
+    display: flex;
+    height: calc(100vh - 60px); /* Full height minus header */
+    position: relative;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f8f8f8; /* Lighter sidebar background */
+    padding: 20px;
+    transition: width 0.3s, padding 0.3s, left 0.3s;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+    border-right: 1px solid #e0e0e0;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    padding: 20px 0;
+    left: -250px;
+}
+
+.sidebar h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #007aff; /* iMessage blue */
+    font-size: 16px;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar a:hover {
+    background-color: #e0e0e0;
+}
+
+
+.sidebar.collapsed {
+    width: 0;
+    padding: 20px 0;
+    left: -250px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+
+.content.sidebar-collapsed {
+    margin-left: 0;
+}
+
+.left-area {
+    flex: 2;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #fdfdfd; /* Slightly off-white for chat area */
+}
+
+.right-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    gap: 20px;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    font-size: 20px;
+    color: #007aff; /* iMessage blue */
+}
+
+/* iMessage specific styles */
+.chat-display {
+    border: 1px solid #e0e0e0; /* Added border */
+    border-radius: 15px !important; /* Increased round corner and forced */
+    background-color: #ffffff; /* Reverted to white */
+    padding: 10px;
+    padding-bottom: 10px; /* Added padding to create space above input */
+    overflow-y: auto;
+    flex-grow: 1;
+    overflow: hidden; /* Ensure content is clipped to rounded corners */
+}
+
+.message-container {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.sent-message {
+    background-color: #007aff; /* iMessage blue */
+    color: white;
+    align-self: flex-end;
+    margin-left: auto; /* Push to the right */
+    border-bottom-right-radius: 4px; /* Pointy corner */
+}
+
+.received-message {
+    background-color: #e5e5ea; /* Light gray for received */
+    color: #333;
+    align-self: flex-start;
+    margin-right: auto; /* Push to the left */
+    border-bottom-left-radius: 4px; /* Pointy corner */
+}
+
+.chat-input-container {
+    display: flex;
+    padding-top: 10px;
+    background-color: #ffffff;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 10px 14px; /* Slightly more padding */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    min-height: 20px; /* Allow for some vertical space */
+    max-height: 100px; /* Prevent it from growing too large */
+    overflow-y: auto; /* Add scroll if content exceeds max-height */
+    resize: none; /* Disable manual resize for input, though it't grow */
+    box-sizing: border-box;
+}
+
+#chat-input::placeholder {
+    color: #999; /* Lighter placeholder text */
+}
+
+#chat-input:focus {
+    border-color: #007aff; /* iMessage blue border on focus */
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25); /* Subtle blue glow */
+}
+
+#send-button {
+    padding: 10px 15px;
+    background-color: #007aff; /* iMessage blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#send-button:hover {
+    background-color: #005bb5;
+}
+
+#notes-textarea {
+    flex-grow: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+#save-notes-btn {
+    padding: 10px 15px;
+    height: 40px; /* Explicit height */
+    line-height: 20px; /* Center text vertically */
+    box-sizing: border-box;
+    background-color: #28a745; /* Green for save */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#save-notes-btn:hover {
+    background-color: #218838;
+}
