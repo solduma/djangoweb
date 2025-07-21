@@ -96,7 +96,3 @@ Once the server is running, navigate to `http://127.00.1:8000/` in your web brow
 - `pyproject.toml`: Project metadata and dependencies managed by `uv`.
 - `.env.example`: Example environment variables.
 - `.gitignore`: Specifies intentionally untracked files to ignore by Git.
-
-## License
-
-[Optional: Add your license information here, e.g., MIT License, Apache 2.0 License, etc.]
