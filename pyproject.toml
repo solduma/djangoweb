@@ -1,0 +1,18 @@
+[project]
+name = "djangoweb"
+version = "0.1.0"
+description = "A Django web application"
+requires-python = ">=3.11"
+dependencies = [
+    "Django==5.2.4",
+    "python-dotenv",
+    "requests",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+# UV-specific settings can go here if needed.
+# For now, just relying on [project] dependencies.

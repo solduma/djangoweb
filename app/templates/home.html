@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="header">
+    <span class="toggle-btn" onclick="toggleSidebar()">&#9776;</span>
+</div>
+
+<div class="main">
+    <div id="sidebar" class="sidebar">
+        <h3>History</h3>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="left-area">
+            <h2 style="flex-shrink: 0;">PRD AI</h2>
+            <div id="chat-display" style="overflow-y: auto; border: 1px solid #ccc; padding: 10px; flex-grow: 1;"></div>
+            <div style="display: flex; flex-shrink: 0;">
+                <input type="text" id="chat-input" placeholder="Type your message..." style="flex-grow: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                <button id="send-button" style="padding: 8px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; margin-left: 5px; cursor: pointer;">Send</button>
+            </div>
+        </div>
+        <div class="right-area">
+            <h2 style="flex-shrink: 0;">중간 결과</h2>
+            <textarea id="notes-textarea" style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; resize: vertical; flex-grow: 1;"></textarea>
+            <button id="save-notes-btn" style="padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; flex-shrink: 0;">Save</button>
+        </div>
+    </div>
+</div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

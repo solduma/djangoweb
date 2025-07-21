@@ -1,0 +1,67 @@
+body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .header {
+            background-color: rgb(30, 136, 229);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+        }
+        .main {
+            display: flex;
+            height: calc(100vh - 60px); /* Full height minus header */
+            position: relative; /* Added for positioning context */
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            transition: width 0.3s, padding 0.3s, left 0.3s; /* Added left to transition */
+            overflow: hidden;
+            position: absolute; /* Changed to absolute */
+            top: 0; /* Position at the top of the main container */
+            left: 0; /* Position at the left of the main container */
+            height: 100%; /* Take full height of the main container */
+            z-index: 100; /* Ensure it's on top of other content */
+            box-sizing: border-box;
+        }
+        .sidebar.collapsed {
+            width: 0;
+            padding: 20px 0;
+            left: -250px; /* Move off-screen when collapsed */
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            height: 100%; /* Ensure content takes full height */
+            margin-left: 250px; /* Initial margin to make space for the sidebar */
+            transition: margin-left 0.3s; /* Add transition for smooth movement */
+        }
+        .content.sidebar-collapsed {
+            margin-left: 0;
+        }
+        .left-area {
+            flex: 2;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .right-area {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .toggle-btn {
+            cursor: pointer;
+            font-size: 20px;
+        }
