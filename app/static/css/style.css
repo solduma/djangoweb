@@ -5,15 +5,17 @@ body {
 }
 
 .header {
-    background-color: #ffffff; /* White header */
-    color: #333; /* Darker text */
+    background-color: #333;
+    color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 40px;
-    border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    justify-content: space-between; /* Changed from flex-start to space-between */
+}
+
+#session-timer {
+    color: white;
+    font-size: 14px;
 }
 
 .header-title {
@@ -126,7 +128,7 @@ body {
 .toggle-btn {
     cursor: pointer;
     font-size: 20px;
-    color: #007aff; /* iMessage blue */
+    color: white;
 }
 
 /* iMessage specific styles */

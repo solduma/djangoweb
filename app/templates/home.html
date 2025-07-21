@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>PRD AI</title>
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
 </head>
@@ -11,6 +12,7 @@
 <div class="header">
     <span class="toggle-btn" onclick="toggleSidebar()">&#9776;</span>
     <span class="header-title">PRD AI</span>
+    <div id="session-timer"></div>
 </div>
 
 <div class="main">
